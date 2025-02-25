@@ -69,13 +69,14 @@ git checkout -b fase4-apis
             # Dependências adicionais requeridas pelo React Navigation
             expo install react-native-gesture-handler react-native-reanimated
             react-native-screens )
+            
           /---- fase2-navegacao 
-        /
-main ----------fase3-estado
-       \
-        \------fase4-apis
-         \
-          \----fase5-CRUD-apis
+        /              \
+main ---                \-----fase3-estado
+                         \
+                          \------fase4-apis
+                           \
+                            \----fase5-CRUD-apis
 
 ```
 
