@@ -51,6 +51,25 @@ native-trade
  ┣━ index.js
  ┣━ package.json
  ┗━ ...
+```
+### sobre este projeto
 
+Este repositório serve como um modelo de aplicação voltado para aulas e estudos de React Native. A ideia é demonstrar, de forma incremental, como construir e evoluir um aplicativo, abordando diferentes conceitos em cada etapa. Para isso, cada fase do desenvolvimento será disponibilizada em uma branch específica, facilitando o acompanhamento passo a passo e a comparação entre as diferentes versões.
 
+```
+git checkout -b main
+git checkout -b fase2-navegacao
+git checkout -b fase3-estado
+git checkout -b fase4-apis
 
+          /---- fase2-navegacao
+        /
+main ----------fase3-estado
+       \
+        \------fase4-apis
+         \
+          \----fase5-CRUD-apis
+
+```
+
+em breve posiveis alterações.
