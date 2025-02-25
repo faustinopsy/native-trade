@@ -70,7 +70,9 @@ git checkout -b fase4-apis
             expo install react-native-gesture-handler react-native-reanimated
             react-native-screens )
             
-          /---- fase2-navegacao 
+            /---- fase2-navegacao 
+           /         \
+         /            \-----fase2-5-props
         /              \
 main ---                \-----fase3-estado
                          \
