@@ -1,14 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import styles from './styles';
+import Card from '../../components/Card';
 
 export default function Sobre() {
   return (
-    <View style={styles.container}>
-      <Text>Aqui é a Sobre</Text>
+    <ScrollView contentContainerStyle={styles.scrollContent}>
+      <View style={styles.grid}>
+        <Card
+          icon="wallet"
+          title="Ativos Financeiros"
+          text="Ações, ETFs, Criptomoedas e Commodidades disponíveis para negociação virtual"
+          containerStyle={styles.primaryCard} 
+          titleStyle={styles.gridTitle}
+          textStyle={styles.gridText}
+          iconColor="#fff"
+        />
+        <Card
+          icon="stats-chart"
+          title="Bolsa de Valores"
+          text="Mercado organizado onde ocorrem negociações de valores mobiliários"
+          containerStyle={styles.secondaryCard} 
+          titleStyle={styles.gridTitle}
+          textStyle={styles.gridText}
+          iconColor="#fff"
+        />
+      </View>
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
-
-
