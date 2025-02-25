@@ -62,7 +62,14 @@ git checkout -b fase2-navegacao
 git checkout -b fase3-estado
 git checkout -b fase4-apis
 
-          /---- fase2-navegacao
+          
+          (instalar bibliotecas
+            npm install @react-navigation/native
+            npm install @react-navigation/drawer @react-navigation/bottom-tabs
+            # Dependências adicionais requeridas pelo React Navigation
+            expo install react-native-gesture-handler react-native-reanimated
+            react-native-screens )
+          /---- fase2-navegacao 
         /
 main ----------fase3-estado
        \
