@@ -59,9 +59,10 @@ Este repositório serve como um modelo de aplicação voltado para aulas e estud
 ```
 git checkout -b main
 git checkout -b fase2-navegacao
+git checkout -b fase2.5-props
 git checkout -b fase3-estado
 git checkout -b fase4-apis
-
+git checkout -b fase5-CRUD-apis
           
           (instalar bibliotecas
             npm install @react-navigation/native
@@ -70,7 +71,9 @@ git checkout -b fase4-apis
             expo install react-native-gesture-handler react-native-reanimated
             react-native-screens )
             
-          /---- fase2-navegacao 
+            /---- fase2-navegacao 
+           /         \
+         /            \-----fase2-5-props
         /              \
 main ---                \-----fase3-estado
                          \
