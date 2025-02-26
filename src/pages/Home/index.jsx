@@ -12,6 +12,10 @@ export default function Home() {
     textStyle: styles.sectionText,
     iconColor: "#3498db"
   };
+  const datacontador = {
+    textStyle: styles.gridText,
+    containerStyle: styles.container,
+  };
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <View style={styles.section}>
@@ -20,8 +24,7 @@ export default function Home() {
         />
       </View>
       <Contador 
-        textStyle={styles.sectionText} 
-        containerStyle={styles.secondaryCard}  
+        data={datacontador} 
       />
     </ScrollView>
   );
