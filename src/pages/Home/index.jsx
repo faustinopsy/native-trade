@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View } from 'react-native';
 import styles from './styles';
 import Card from '../../components/Card';
-
+import Contador from '../../components/Contador';
 export default function Home() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -16,6 +16,10 @@ export default function Home() {
           iconColor="#3498db"
         />
       </View>
+      <Contador 
+        textStyle={styles.sectionText} 
+        containerStyle={styles.secondaryCard}  
+      />
     </ScrollView>
   );
 }
