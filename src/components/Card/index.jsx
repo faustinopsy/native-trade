@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Card({ icon, title, text, containerStyle, titleStyle, textStyle, iconColor }) {
+export default function Card({ data}) {
   return (
-    <View style={containerStyle}>
-      <Ionicons name={icon} size={32} color={iconColor || '#fff'} />
-      <Text style={titleStyle}>{title}</Text>
-      <Text style={textStyle}>{text}</Text>
+    <View style={data.containerStyle}>
+      <Ionicons name={data.icon} size={32} color={data.iconColor || '#fff'} />
+      <Text style={data.titleStyle}>{data.title}</Text>
+      <Text style={data.textStyle}>{data.text}</Text>
     </View>
   );
 }
