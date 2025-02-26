@@ -7,7 +7,15 @@ function Contador({data }) {
   return (
     <View style={data.containerStyle}>
       <Text style={data.textStyle}>Você clicou {count} vezes</Text>
-      <Button title="Clique" onPress={() => setCount(count + 1)} />
+      <View style={data.containerButton}>
+        <Button style={data.botao} title="Aumentar" onPress={() => setCount(count + 1)} />
+        <Button style={data.botao} title="Diminuir" onPress={() => setCount(count - 1)} />
+      </View>
+      {
+          count	%	2	==	0
+          ?	<Text>O	número	é	par!</Text>
+          :	<Text>O	número	é	ímpar!</Text>
+			}
     </View>
   );
 }

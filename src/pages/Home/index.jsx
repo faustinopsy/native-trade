@@ -15,6 +15,8 @@ export default function Home() {
   const datacontador = {
     textStyle: styles.gridText,
     containerStyle: styles.container,
+    containerButton: styles.grid,
+    botao: styles.title,
   };
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>

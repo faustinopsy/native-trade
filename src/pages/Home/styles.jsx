@@ -52,8 +52,9 @@ export default StyleSheet.create({
   },
   grid: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginBottom: 20,
+    width: '100%',
   },
   gridCard: {
     width: '60%',

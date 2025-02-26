@@ -24,13 +24,26 @@ export default function Sobre() {
     iconColor: "#fff"
   };
 
+  const cardData3 = {
+    icon: "stats-chart",
+    title: "xxxxxx",
+    text: "ZXC",
+    containerStyle: styles.container,
+    titleStyle: styles.gridTitle,
+    textStyle: styles.gridText,
+    iconColor: "#fff"
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>
-      <View style={styles.grid}>
-        <Card data={cardData1} />
-        <Card data={cardData2} />
+      <View style={styles.scrollContent}>
+        <View style={styles.grid}>
+          <Card data={cardData1} />
+          <Card data={cardData2} />
+        </View>
+        <Card data={cardData3} />
+        <StatusBar style="auto" />
       </View>
-      <StatusBar style="auto" />
     </ScrollView>
   );
 }
