@@ -77,9 +77,11 @@ git checkout -b fase5-CRUD-apis
         /              \
 main ---                \-----fase3-estado
                          \
-                          \------fase4-apis
+                          \-----fase3-usereffect
                            \
-                            \----fase5-CRUD-apis
+                            \------fase4-apis
+                             \
+                              \----fase5-CRUD-apis
 
 ```
 
