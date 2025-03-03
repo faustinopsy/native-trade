@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import Form from './../../components/Form';
 import styles from './styles';
-
+import DemoEffects from './../../components/DemoEffects';
 export default function Contato() {
   const formConfig = {
     formStyle: { padding: 10 },
@@ -36,6 +36,7 @@ export default function Contato() {
       <View style={styles.container}>
         <Text style={styles.title}>Entre em Contato</Text>
         <Form formConfig={formConfig} />
+        <DemoEffects />
         <StatusBar style="auto" />
       </View>
     </ScrollView>

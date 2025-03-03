@@ -6,9 +6,11 @@ import defaultStyles from './styles';
 export default function Form({ formConfig }) {
   const { formStyle, inputs, button } = formConfig;
 
-  const initialState = inputs.reduce((acc, input) => {
-    acc[input.key] = '';
-    return acc;
+  const initialState = inputs.reduce((key, input) => {
+    console.log(key)
+    console.log(input)
+    key[input.key] = '';
+    return key;
   }, {});
 
   const [formData, setFormData] = useState(initialState);
