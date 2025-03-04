@@ -1,9 +1,9 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
-import Form from './../../components/Form';
+import Form from '../../components/Form';
 import styles from './styles';
-import DemoEffects from './../../components/DemoEffects';
+import DemoEffects from '../../components/DemoEffects';
 export default function Contato() {
   const formConfig = {
     formStyle: { padding: 10 },

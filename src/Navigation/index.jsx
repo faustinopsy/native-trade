@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from '../pages/Home'
 import Sobre from '../pages/Sobre'
-import Contato from '../pages/Contato'
+import Carteira from '../pages/Carteira'
 import { MaterialIcons } from "@expo/vector-icons"
 
 const nav = false ? createDrawerNavigator() : createBottomTabNavigator();
@@ -18,7 +18,7 @@ function DrawerNavigator() {
 
         if (route.name === "Home") {
           iconName = "home";
-        } else if (route.name === "Contato") {
+        } else if (route.name === "Carteira") {
           iconName = "trending-up";
         } else if (route.name === "Sobre") {
           iconName = "school";
@@ -31,7 +31,7 @@ function DrawerNavigator() {
     })}>
       <nav.Screen name="Home" component={Home} />
       <nav.Screen name="Sobre" component={Sobre} />
-      <nav.Screen name="Contato" component={Contato} />
+      <nav.Screen name="Carteira" component={Carteira} />
     </nav.Navigator>
   );
 }
