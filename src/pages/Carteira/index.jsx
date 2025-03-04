@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../services/api';
 import styles from './styles';
 
 export default function Carteira() {
-  const [data, setData] = useState(null);
+  const [moneyData, setMoneyData] = useState(null);
+  const [carteira, setCarteira] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true);
+        setError(null);
+
         let storedToken = await AsyncStorage.getItem('@myapp:token');
 
-        let body = {};
+        if (!storedToken) {
+          const respMoney = await api.post('/money'); 
+          if (respMoney.data?.token) {
+            storedToken = respMoney.data.token;
+            await AsyncStorage.setItem('@myapp:token', storedToken);
+          }
+          setMoneyData(respMoney.data);
+        } else {
+          const respMoney = await api.post('/money', { token: storedToken });
+          setMoneyData(respMoney.data);
+          if (respMoney.data?.token) {
+            storedToken = respMoney.data.token;
+            await AsyncStorage.setItem('@myapp:token', storedToken);
+          }
+        }
+
         if (storedToken) {
-          body = { token: storedToken };
+          const respCarteira = await api.get(`/carteira/${storedToken}`);
+          setCarteira(respCarteira.data);
         }
-
-        const response = await api.post('/money', body);
-        console.log('response.data:', response.data);
-
-        if (response.data?.token) {
-          await AsyncStorage.setItem('@myapp:token', response.data.token);
-        }
-
-        setData(response.data);
 
       } catch (err) {
         setError(err.message);
@@ -56,10 +67,27 @@ export default function Carteira() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>API</Text>
-      <View>
-        <Text>Token: {data?.token}</Text>
-        <Text>Money: {data?.money}</Text>
+      <View style={styles.section}>
+        <Text>Token: {moneyData?.token}</Text>
+        <Text>Money: {moneyData?.money}</Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.title}>Carteira:</Text>
+        <FlatList
+          data={carteira}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View style={{ marginVertical: 4 }}>
+              <Text>ID: {item.id}</Text>
+              <Text>Cripto: {item.crypto}</Text>
+              <Text>Preço: {item.preco}</Text>
+              <Text>Quantidade: {item.amount}</Text>
+              <Text>Tipo: {item.type}</Text>
+              <Text>Money: {item.money}</Text>
+            </View>
+          )}
+        />
       </View>
     </View>
   );
