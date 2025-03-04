@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 18,
-    marginBottom: 10,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#2c3e50',
+    maxWidth: '80%',
   },
   item: {
     marginBottom: 20,

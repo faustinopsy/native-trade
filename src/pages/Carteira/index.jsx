@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Button, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../services/api';
 import styles from './styles';
@@ -89,6 +89,13 @@ export default function Carteira() {
           )}
         />
       </View>
+      <View style={styles.section}>
+        <Text>CRIPTO: </Text>
+        <Button style={styles.title} title="Comprar" onPress={() => Alert.alert("compra")} />
+        <Button style={styles.title} title="Vender" onPress={() => Alert.alert("vende")} />
+      </View>
+
+      
     </View>
   );
 }
