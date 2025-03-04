@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -34,6 +36,11 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  input:{
+    fontSize: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   error: {
     color: 'red',
