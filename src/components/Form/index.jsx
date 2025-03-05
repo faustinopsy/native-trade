@@ -1,38 +1,14 @@
-// Form.jsx
-import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, } from 'react-native';
-import defaultStyles from './styles';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 
-export default function Form({ formConfig }) {
-  const { formStyle, inputs, button } = formConfig;
+const Form = ({ children, style }) => {
+  return <View style={[styles.form, style]}>{children}</View>;
+};
 
-  const initialState = inputs.reduce((key, input) => {
-    key[input.key] = '';
-    return key;
-  }, {});
+const styles = StyleSheet.create({
+  form: {
+    padding: 10,
+  },
+});
 
-  const [formData, setFormData] = useState(initialState);
-
-  const enviarForm = () => {
-    console.log('Dados do formulário:', formData);
-  };
-
-  return (
-    <View style={[defaultStyles.formContainer, formStyle]}>
-      {inputs.map((input) => (
-        <TextInput
-          key={input.key}
-          placeholder={input.placeholder}
-          style={[defaultStyles.input, input.style]}
-          value={formData[input.key]}
-          multiline={input.multiline || false}
-        />
-      ))}
-      <TouchableOpacity onPress={enviarForm} style={[defaultStyles.button, button.style]}>
-        <Text style={defaultStyles.buttonText}>{button.title}</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-
+export default Form;
