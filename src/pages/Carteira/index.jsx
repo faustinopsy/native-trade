@@ -40,6 +40,10 @@ export default function Carteira() {
         }
         
       } catch (err) {
+        if(err.status === 500){
+          await AsyncStorage.removeItem('@myapp:tokenjwt');
+          fetchJWT()
+        }
         setError(err.message);
       } finally {
         setLoading(false);
