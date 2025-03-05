@@ -1,20 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  scrollContent: { 
-    flexGrow: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center' 
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 20,
   },
-  container: { 
-    flex: 1, 
-    padding: 16, 
-    width: '100%' 
+  container: {
+    flex: 1,
   },
-  title: { 
-    fontSize: 24, 
-    marginBottom: 20, 
-    textAlign: 'center' 
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+    textAlign: 'center',
   },
 });
 
