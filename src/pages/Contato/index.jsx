@@ -1,47 +1,65 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
-import Form from '../../components/Form';
+import React, { useState } from 'react';
+import { ScrollView, View, Text,Alert } from 'react-native';
 import styles from './styles';
+import Form from './../../components/Form';
+import FormField from './../../components/FormField';
+import FormButton from './../../components/FormButton';
 import DemoEffects from '../../components/DemoEffects';
 export default function Contato() {
-  const formConfig = {
-    formStyle: { padding: 10 },
-    inputs: [
-      {
-        key: 'nome',
-        placeholder: 'Digite seu nome',
-        style: { height: 40, borderWidth: 1, marginBottom: 10, padding: 5 },
-      },
-      {
-        key: 'email',
-        placeholder: 'Digite seu email',
-        style: { height: 40, borderWidth: 1, marginBottom: 10, padding: 5 },
-      },
-      {
-        key: 'mensagem',
-        placeholder: 'Digite sua mensagem',
-        style: { height: 100, borderWidth: 1, marginBottom: 10, padding: 5 },
-        multiline: true,
-      },
-    ],
-    button: {
-      title: 'Enviar',
-      style: { backgroundColor: '#3498db', padding: 10, alignItems: 'center' },
-    },
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  const enviarForm = () => {
+      if (nome.trim() === '' || email.trim() === '' || mensagem.trim() === '') {
+        Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+        window.alert('Por favor, preencha todos os campos.');
+        return;
+      }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Erro', 'Por favor, insira um email válido.');
+      window.alert('Por favor, insira um email válido.');
+      return;
+    }
+    console.log(`Nome: ${nome} Email: ${email} Mensagem: ${mensagem}`);
+    Alert.alert(`Nome: ${nome} Email: ${email} Mensagem: ${mensagem}`);
+    window.alert(`Nome: ${nome} Email: ${email} Mensagem: ${mensagem}`);
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContent}>
+    <ScrollView contentContainerStyle={styles.scrollContent} onScroll={(e) => console.log("Scroll Y:", e.nativeEvent.contentOffset.y)}>
       <View style={styles.container}>
         <Text style={styles.title}>Entre em Contato</Text>
-        <Form formConfig={formConfig} />
+        <Form>
+          <FormField
+            label="Nome"
+            value={nome}
+            onChangeText={setNome}
+            placeholder="Digite seu nome"
+          />
+          <FormField
+            label="Email"
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Digite seu email"
+          />
+          <FormField
+            label="Mensagem"
+            value={mensagem}
+            onChangeText={setMensagem}
+            placeholder="Digite sua mensagem"
+            multiline={true}
+            labelStyle={{}}
+            inputStyle={{ height: 100, borderWidth: 1, marginBottom: 10, padding: 5 }}
+          />
+          <FormButton title="Enviar" onPress={enviarForm} />
+        </Form>
         <DemoEffects />
-        <StatusBar style="auto" />
       </View>
     </ScrollView>
   );
 }
-
 
 
