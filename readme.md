@@ -82,6 +82,8 @@ main ---                \-----fase3-estado
                             \------fase4-apis
                              \
                               \----fase5-CRUD-apis
+                               \
+                                \----fase6-Jwt-client-serve
 
 ```
 
