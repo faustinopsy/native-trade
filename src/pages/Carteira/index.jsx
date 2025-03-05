@@ -17,6 +17,37 @@ export default function Carteira() {
   const [quote, setQuote] = useState(null);
   const [orderAmount, setOrderAmount] = useState('2');
 
+
+  useEffect(() => {
+    async function fetchJWT() {
+      try {
+        setLoading(true);
+        setError(null);
+        let storedToken = await AsyncStorage.getItem('@myapp:tokenjwt');
+        if (!storedToken) {
+          const respoJWT = await api.post('/auth/create');
+          if (respoJWT.data?.jwt) {
+            storedToken = respoJWT.data.jwt;
+            await AsyncStorage.setItem('@myapp:tokenjwt', storedToken);
+          }
+          
+        }else{
+          const respoJWT = await api.post('/auth/refresh');
+          if (respoJWT.data?.jwt) {
+            storedToken = respoJWT.data.jwt;
+            await AsyncStorage.setItem('@myapp:tokenjwt', storedToken);
+          }
+        }
+        
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchJWT();
+  }, []);
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -56,7 +87,7 @@ export default function Carteira() {
       setLoading(true);
       const cryptoLower = selectedCrypto.toLowerCase();
       const response = await api.get(`/quote/${cryptoLower}`);
-      if (response.data && response.data.success) {
+      if (response.data.success) {
         setQuote(response.data);
       } else {
         Alert.alert('Erro', 'Não foi possível obter o quote.');
@@ -69,14 +100,17 @@ export default function Carteira() {
   }
 
   async function handleOrder(type) {
+    
     try {
       const token = moneyData?.token;
       if (!token) {
         Alert.alert('Erro', 'Token não encontrado.');
+        window.alert('Erro: Token não encontrado.');
         return;
       }
       if (!quote) {
-        Alert.alert('Erro', 'Nenhum quote disponível para a operação.');
+        Alert.alert('Erro', 'Nenhuma cotação disponível para a operação.');
+        window.alert('Erro: Nenhuma cotação disponível para a operação.');
         return;
       }
       const payload = {
@@ -87,14 +121,16 @@ export default function Carteira() {
         type
       };
       const response = await api.post('/carteira', payload);
-      if (response.data && response.data.status === 'success') {
+
+      if (response.data.status === 'success') {
         Alert.alert('Sucesso', response.data.message);
         const refreshedMoney = await api.post('/money', { token });
         setMoneyData(refreshedMoney.data);
         const refreshedCarteira = await api.get(`/carteira/${token}`);
         setCarteira(refreshedCarteira.data);
-      } else if (response.data && response.data.status === 'error') {
+      } else if (response.data.status === 'error') {
         Alert.alert('Erro', response.data.message);
+        window.alert(response.data.message);
       } else {
         Alert.alert('Erro', 'Resposta inesperada do servidor.');
       }

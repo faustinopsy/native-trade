@@ -10,7 +10,7 @@ export default function QuoteSection({ selectedCrypto, setSelectedCrypto, fetchQ
       <Picker
         selectedValue={selectedCrypto}
         onValueChange={(itemValue) => setSelectedCrypto(itemValue)}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 50, width: 150 , textAlign:'center'}}
       >
         <Picker.Item label="BTC" value="BTC" />
         <Picker.Item label="LTC" value="LTC" />

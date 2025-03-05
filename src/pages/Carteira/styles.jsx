@@ -39,13 +39,19 @@ const styles = StyleSheet.create({
   },
   input:{
     fontSize: 22,
-    justifyContent: 'center',
+    textAlign: 'center',
     alignItems: 'center',
   },
   error: {
     color: 'red',
     fontSize: 16,
   },
+  buttonSell:{
+    backgroundColor: 'red',
+  },
+  buttonBuy:{
+    backgroundColor: 'green',
+  }
 });
 
 

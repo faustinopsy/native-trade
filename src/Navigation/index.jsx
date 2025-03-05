@@ -6,7 +6,7 @@ import Home from '../pages/Home'
 import Sobre from '../pages/Sobre'
 import Carteira from '../pages/Carteira'
 import { MaterialIcons } from "@expo/vector-icons"
-
+import { AuthProvider } from './../services/AuthProvider';
 const nav = false ? createDrawerNavigator() : createBottomTabNavigator();
 
 function DrawerNavigator() {
@@ -38,8 +38,10 @@ function DrawerNavigator() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
