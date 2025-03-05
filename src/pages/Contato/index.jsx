@@ -4,7 +4,7 @@ import styles from './styles';
 import Form from './../../components/Form';
 import FormField from './../../components/FormField';
 import FormButton from './../../components/FormButton';
-
+import DemoEffects from '../../components/DemoEffects';
 export default function Contato() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -56,6 +56,7 @@ export default function Contato() {
           />
           <FormButton title="Enviar" onPress={enviarForm} />
         </Form>
+        <DemoEffects />
       </View>
     </ScrollView>
   );
