@@ -7,8 +7,6 @@ export default function Form({ formConfig }) {
   const { formStyle, inputs, button } = formConfig;
 
   const initialState = inputs.reduce((key, input) => {
-    console.log(key)
-    console.log(input)
     key[input.key] = '';
     return key;
   }, {});
