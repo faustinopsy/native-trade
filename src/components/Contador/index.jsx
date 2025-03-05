@@ -12,7 +12,7 @@ function Contador({data }) {
         <Button style={data.botao} title="Diminuir" onPress={() => setCount(count - 1)} />
       </View>
       {
-          count	%	2	==	0
+          count	%	2	==	0 
           ?	<Text>O	número	é	par!</Text>
           :	<Text>O	número	é	ímpar!</Text>
 			}
