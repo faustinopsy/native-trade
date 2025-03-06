@@ -4,18 +4,24 @@ import CounterButton from './CounterButton';
 import CounterDisplay from './CounterDisplay';
 function Contador({data }) {
   const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
   const incrementCounter = () => {
     setCount(prevCount => prevCount + 1);
   }
   const decrementCounter = () => {
     setCount(prevCount => prevCount - 1);
   }
+  const carrinho = () => {
+    setCart([...cart, count]);
+  }
   return (
     <View style={data.containerStyle}>
       <CounterDisplay count={count} />
+      <CounterDisplay count={cart} />
       <View style={data.containerButton}>
         <CounterButton onIncrement={incrementCounter} text="Incremento"/>
         <CounterButton onIncrement={decrementCounter} text="Decremento"/>
+        <CounterButton onIncrement={carrinho} text="Carrinho"/>
       </View>
       {
           count	%	2	==	0 
